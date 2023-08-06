@@ -5,8 +5,9 @@
 <meta charset="UTF-8">
 <html>
 <head>
-	<title>Home</title>
+	<meta charset="UTF-8">
 </head>
+<%@ include file="nav.jsp" %>
 <body>
 <h1>
 	Hello world!  
@@ -14,4 +15,5 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
+<%@ include file="footer.jsp" %>
 </html>
