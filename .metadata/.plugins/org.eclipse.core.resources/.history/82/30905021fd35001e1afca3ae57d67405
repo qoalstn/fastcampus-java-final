@@ -1,0 +1,16 @@
+import java.util.List;
+
+import com.fastcampus.management.repository.RentRepo;
+
+public class RentService {
+
+    private final RentRepo rentRepo;
+
+    public MySerRentServicevice(RentRepo rentRepo) {
+        this.rentRepo = rentRepo;
+    }
+
+    public List<String> getAllNamesFromRepository() {
+        return rentRepo.getAllNames();
+    }
+}

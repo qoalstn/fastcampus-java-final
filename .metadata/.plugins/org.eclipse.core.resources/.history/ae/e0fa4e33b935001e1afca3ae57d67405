@@ -1,0 +1,7 @@
+package com.fastcampus.management;
+
+public class ConnectMysql {
+    public static void main(String[] args) {
+        System.out.println("hello world");
+    }
+}

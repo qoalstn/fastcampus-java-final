@@ -1,0 +1,87 @@
+package com.fastcampus.management;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ConnectMysql {
+    String jdbcUrl = "jdbc:mysql://localhost:3306/management";
+    String username = "root";
+    String password = "root";
+    
+    private ConnectMysql() {};
+    
+    
+    public static void main(String[] args) {    	
+    	ConnectMysql connectMysql = new ConnectMysql();
+    	int newCustNo = connectMysql.getNewCustNo();
+    	System.out.println("new : "+ newCustNo);
+    }
+    
+    public int getNewCustNo() {
+    	int cust_no = 0;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+            if (connection != null) {
+                System.out.println("Connected to the database!");
+                
+                Statement statement = connection.createStatement();
+                
+                String query = "SELECT cust_no FROM member_tbl ORDER BY cust_no DESC LIMIT 1";	
+                ResultSet resultSet = statement.executeQuery(query);
+                while(resultSet.next()) {
+                	cust_no = resultSet.getInt("cust_no");                	
+                }
+                
+                resultSet.close();
+                statement.close();
+                connection.close();
+                
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println("MySQL JDBC driver not found");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Connection to the database failed");
+            e.printStackTrace();
+        } 
+        return cust_no + 1;
+    }  
+    
+    public void test() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+            if (connection != null) {
+                System.out.println("Connected to the database!");
+                
+                Statement statement = connection.createStatement();
+                
+                String query = "SELECT * FROM rent_tbl";	
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while (resultSet.next()) {
+                    int cust_no = resultSet.getInt("cust_no");
+                    int rent_no = resultSet.getInt("rent_no");
+                    String book_code = resultSet.getString("book_code");
+                    System.out.println("cust_no: " + cust_no + ", rent_no: " + rent_no + ", book_code: " + book_code);
+                }
+
+                resultSet.close();
+                statement.close();
+                connection.close();
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println("MySQL JDBC driver not found");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Connection to the database failed");
+            e.printStackTrace();
+        } 
+    }
+}

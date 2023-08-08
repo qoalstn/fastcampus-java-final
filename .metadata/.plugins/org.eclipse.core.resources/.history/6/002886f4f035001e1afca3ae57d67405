@@ -1,0 +1,43 @@
+package com.fastcampus.management.repository;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.fastcampus.management.util.ConnectMysql;
+
+public class MemberRepo {
+	Connection conn = null;
+	
+	  private void MemberRepo() {
+		  conn = ConnectMysql.getConnection();
+	  }
+	
+	  public int getNewCustNo() {
+		int cust_no = 0;
+	    try {	
+	        if (conn != null) {
+	            System.out.println("Connected to the database!");
+	            
+	            Statement statement = conn.createStatement();
+	            
+	            String query = "SELECT cust_no FROM member_tbl ORDER BY cust_no DESC LIMIT 1";	
+	            ResultSet resultSet = statement.executeQuery(query);
+	            while(resultSet.next()) {
+	            	cust_no = resultSet.getInt("cust_no");                	
+	            }
+	            
+	            resultSet.close();
+	            statement.close();
+	            conn.close();
+	            
+	        }
+	    }catch (SQLException e) {
+	        System.out.println("Connection to the database failed");
+	        e.printStackTrace();
+	    } 
+	    return cust_no + 1;
+	}  
+		
+}

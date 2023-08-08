@@ -1,0 +1,18 @@
+package com.fastcampus.management.service;
+
+import java.util.List;
+
+import com.fastcampus.management.repository.MemberRepo;
+
+public class MemberService {
+    private final MemberRepo memberRepo;
+
+    public MemberService(MemberRepo memberRepo) {
+        this.memberRepo = memberRepo;
+    }
+
+    public int getNewCustNo() {
+    	System.out.println("ressssss" + memberRepo.getNewCustNo());
+        return memberRepo.getNewCustNo();
+    }
+}

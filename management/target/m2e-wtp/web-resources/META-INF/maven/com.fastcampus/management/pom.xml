@@ -122,7 +122,33 @@
 		    <groupId>org.apache.tomcat.embed</groupId>
 		    <artifactId>tomcat-embed-core</artifactId>
 		    <version>9.0.72</version>
-		</dependency>    
+		</dependency>   
+		
+		<!-- MySQL 설정 -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.49</version>
+		</dependency>
+		
+		
+		<!-- Spring 설정 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!--  DataSource 설정 -->
+		<dependency>
+		    
+		    <groupId>commons-dbcp</groupId>
+		    
+		    <artifactId>commons-dbcp</artifactId>
+		    
+		    <version>1.4</version>
+		    
+		</dependency>
 	</dependencies>
     <build>
         <plugins>

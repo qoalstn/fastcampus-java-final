@@ -1,0 +1,5 @@
+package com.fastcampus.management.repository;
+
+public class Rent {
+
+}

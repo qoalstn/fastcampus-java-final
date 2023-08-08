@@ -1,0 +1,51 @@
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+    <property name="url" value="jdbc:mysql://localhost:3306/your_database_name" />
+    <property name="username" value="your_username" />
+    <property name="password" value="your_password" />
+</bean>
+
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    <constructor-arg ref="dataSource" />
+</bean>
+your_database_name, your_username, your_password를 실제 데이터베이스 정보로 변경하세요.
+
+Java 코드에서 JdbcTemplate 사용:
+JdbcTemplate을 사용하여 데이터베이스에 쿼리를 실행하고 결과를 가져올 수 있습니다.
+
+java
+Copy code
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ItemRepository {
+
+    private final JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public ItemRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public List<Item> getAllItems() {
+        String query = "SELECT * FROM your_table_name";
+        return jdbcTemplate.query(query, (resultSet, rowNum) -> {
+            Item item = new Item();
+            item.setId(resultSet.getInt("id"));
+            item.setName(resultSet.getString("name"));
+            item.setPrice(resultSet.getDouble("price"));
+            return item;
+        });
+    }
+}
+실행 및 테스트:
+JdbcTemplate을 사용하여 데이터베이스 쿼리를 실행하는 부분을 서비스나 컨트롤러에서 호출하여 데이터를 가져오는 것이 가능합니다.
+
+이렇게 하면 스프링 레거시 프로젝트에서 MySQL 데이터베이스를 연결하고 쿼리하는 방법을 구현할 수 있습니다. 위의 예제는 단순한 연결 및 쿼리 작업을 다루는 것으로 실제로는 더 복잡한 로직과 예외 처리를 추가해야 할 수 있습니다.
+
+
+
+
+
