@@ -1,0 +1,10 @@
+package model;
+
+public class member {
+	cust_no
+	cust_name
+	phone
+	join_date
+	cust_email
+	grade
+}

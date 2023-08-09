@@ -1,0 +1,5 @@
+package com.fastcampus.management.model;
+
+public class Member {
+
+}

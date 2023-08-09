@@ -6,8 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>
-		-- Footer --
-	</h1>
+	<h2>나도 할 수 있는 Java & Spring 웹 개발 종합반 김생기	</h2>
 </body>
 </html>

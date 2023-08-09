@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<style>
+    .container {
+        display: flex;
+    }
+
+    .container form {
+        display: flex;
+        gap: 10px; /* 각 form 태그 사이의 간격 조절 */
+    }
+</style>
+    
+<body>
+
+<div class="container">
+
+<form action="${pageContext.request.contextPath}/regist" method="get">
+    <button type="submit">고객등록</button>
+</form>
+
+<form action="${pageContext.request.contextPath}/cust" method="get">
+    <button type="submit">고객목록조회</button>
+</form>
+
+<form action="${pageContext.request.contextPath}/rent" method="get">
+    <button type="submit">고객대여리스트</button>
+</form>
+
+<form action="${pageContext.request.contextPath}/price" method="get">
+    <button type="submit">고객대여금액조회</button>
+</form>
+
+<form action="${pageContext.request.contextPath}/home" method="get">
+    <button type="submit">홈으로</button>
+</form>
+
+</div>
+
+</body>
+</html>

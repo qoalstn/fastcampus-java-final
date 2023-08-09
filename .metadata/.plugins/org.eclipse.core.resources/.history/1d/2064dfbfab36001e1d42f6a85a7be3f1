@@ -1,0 +1,14 @@
+package com.fastcampus.management.model;
+
+import java.util.Date;
+
+import javax.swing.Spring;
+
+public class Member {
+	private int cust_no;
+	private String cust_name;
+	private String phone;
+	private Date join_date;
+	private String cust_email;
+	private String grade;
+}

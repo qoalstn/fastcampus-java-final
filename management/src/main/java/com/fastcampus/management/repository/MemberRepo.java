@@ -27,7 +27,6 @@ public class MemberRepo {
 
           while (resultSet.next()) {
 	          	cust_no = resultSet.getInt("cust_no");   
-	          	System.out.println("hihi : "+ cust_no);
           }
 
           resultSet.close();
@@ -39,41 +38,33 @@ public class MemberRepo {
           e.printStackTrace();
       }
 
-      return cust_no;
+      return cust_no+1;
   }
 	
+	public void saveMember(String cust_name, String phone, String cust_email, String grade) {		  
+	      try {
+	          Class.forName("com.mysql.cj.jdbc.Driver");
+	          Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+	          String query = "INSERT INTO member_tbl (cust_name, phone, cust_email, grade) VALUES (?,?,?,?)";
+	          PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+				preparedStatement.setString(1, cust_name);
+				preparedStatement.setString(2, phone);
+				preparedStatement.setString(3, cust_email);
+				preparedStatement.setString(4, grade);
+
+				preparedStatement.executeUpdate();
+
+	          preparedStatement.close();
+	          connection.close();
+	      } catch (ClassNotFoundException e) {
+	          e.printStackTrace();
+	      } catch (SQLException e) {
+	          e.printStackTrace();
+	      }
+	  }
 	
 	
 	
-	
-//	  try {	
-//	      Class.forName("com.mysql.cj.jdbc.Driver");
-//	      Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
-//	
-//	      if (connection != null) {
-//	          System.out.println("Connected to the database!");
-//	          
-//	          String query = "SELECT cust_no FROM member_tbl ORDER BY cust_no DESC LIMIT 1";	
-//	          PreparedStatement preparedStatement = connection.prepareStatement(query);
-//	          ResultSet resultSet = preparedStatement.executeQuery();
-//	          while(resultSet.next()) {
-//	          	cust_no = resultSet.getInt("cust_no");   
-//	          	System.out.println("hihi : "+ cust_no);
-//	          }
-//	          
-//	          resultSet.close();
-//	          preparedStatement.close();
-//	          connection.close();
-//	          
-//	      }
-//	  } catch (ClassNotFoundException e) {
-//	      System.out.println("MySQL JDBC driver not found");
-//	      e.printStackTrace();
-//	  } catch (SQLException e) {
-//	      System.out.println("Connection to the database failed");
-//	      e.printStackTrace();
-//	  } 
-//	  return cust_no + 1;
-//	}  
-		
 }

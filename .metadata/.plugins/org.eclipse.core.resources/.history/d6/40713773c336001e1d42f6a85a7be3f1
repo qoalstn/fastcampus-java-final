@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%@ include file="/WEB-INF/views/header.jsp" %>
+<%@ include file="/WEB-INF/views/menu.jsp" %>
+<strong> 도서 고객 및 대여관리 프로그램 <br><br></strong> 
+
+프로그램 작성순서  <br>
+1. 고객정보 테이블을 생성 한다. <br>
+2. 대여정보 테이블을 생성 한다. <br>
+3. 고객정보, 대여정보 테이블에 제시된 데이터를 생성한다. <br>
+4. 고객정보 입력 화면 프로그램을 작성한다. <br>
+5. 고객정보 조회 프로그램을 작성한다. <br>
+6. 고객대여리스트를 조회하는 프로그램을 작성한다. <br>
+7. 고객별 대여금액을 조회하는 프로그램을 작성한다. <br>
+
+<%@ include file="/WEB-INF/views/footer.jsp" %>
+</body>
+</html>

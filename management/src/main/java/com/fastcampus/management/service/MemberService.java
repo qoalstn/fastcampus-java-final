@@ -18,4 +18,8 @@ public class MemberService {
         int newMember = memberRepo.getNewCustNo();
         return newMember;
     }
+    
+    public void saveMember(String cust_name, String phone, String cust_email, String grade) {
+    	 memberRepo.saveMember( cust_name,  phone,  cust_email,  grade);
+    }
 }
